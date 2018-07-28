@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AboutPage } from './about.page';
+import { AlertController } from '@ionic/angular';
 
 @NgModule({
   imports: [
@@ -14,4 +15,18 @@ import { AboutPage } from './about.page';
   ],
   declarations: [AboutPage]
 })
-export class AboutPageModule {}
+export class AboutPageModule {
+  constructor(public alertController: AlertController) {}
+
+  async presentAlert() {
+    const alert = this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+}
