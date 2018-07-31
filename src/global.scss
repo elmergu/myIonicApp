@@ -11,7 +11,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .header {
-    background: #F8F8F8;
+    background: var(--ion-color-light-tint, #F8F8F8);
 }
 
 .header-ios {

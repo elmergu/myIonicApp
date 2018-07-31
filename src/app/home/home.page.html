@@ -4,7 +4,60 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content padding class="home-content">
+    <ion-grid *ngIf='weather?.weather'>
+        <ion-row>
+          <ion-col text-center>
+            Guatemala, Guatemala
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+              {{now | date:'EEEE, MMMM d'}}
+            </ion-col>
+          </ion-row>
+
+        <ion-row align-items-center>
+            <ion-col  padding-top>
+              <div text-center class="temperature">
+                  {{weather.main.temp }}&#176;
+              </div>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col text-center>
+                  <img width="200" src="https://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt="">
+              </ion-col>
+          </ion-row>
+
+        <ion-row >
+          <ion-col text-center>
+              {{weather.weather[0].description | titlecase }}
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <ion-row text-center>
+              <ion-col>
+                Humidity
+              </ion-col>
+              <ion-col>
+                Wind
+              </ion-col>
+            </ion-row>
+            <ion-row text-center>
+                <ion-col>
+                  {{weather.main.humidity }}%
+                </ion-col>
+                <ion-col>
+                  {{weather.wind.speed * 3.6}} km/h
+                </ion-col>
+              </ion-row>
+          </ion-col>
+        </ion-row>
+  
+      </ion-grid>
 </ion-content>
